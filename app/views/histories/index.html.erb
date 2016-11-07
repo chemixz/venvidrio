@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row show-grid text-left">  <!-- Form busqueda -->
+        <div class="col-sm-12">
+          <div class="col-xs-12    col-sm-7 col-sm-offset-7    col-md-6 col-md-offset-8  ">
+            <%= form_tag( histories_search_path, class: 'navbar-form navbar-left'   ) do %>
+              <div class="form-group">
+                <input type="text" class="form-control"  name="searcher[textsearch]" placeholder="Search">
+                <input type="hidden" name="searcher[item_search]"  class="form-control">
+              </div>
+              <div class="form-group">
+                <select name="searcher[field]"  class="form-control" >
+                 <option value="code"> Codigo </option>
+                 <option value="serial"> Serial </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" class="form-control">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
+            <% end %>
+          </div>
+        </div>
+    </div>    <!-- fin busqueda -->
+      <%= render "partials/notices" %>
+    <h1>Listing Histories</h1>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Codigo</th>
+            <th>Serial</th>
+            <th>Descripción</th>
+            <th>Notas</th>
+            <th>Fecha</th>
+            <th colspan="3" class="text-center">Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @histories.each do |history| %>
+            <tr>
+              <td><%= history.engine.code %></td>
+              <td><%= history.engine.serial %></td>
+              <td><%= history.description %></td>
+              <td><%= history.notes %></td>
+              <td><%= history.date %></td>
+              <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-sunglasses blue\"></span>".html_safe, history %></p></td>
+              <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-edit green\"></span>".html_safe, edit_history_path(history) %></p></td>
+             <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-trash red\"></span>".html_safe, history, id: history.id, method: :delete, data: { confirm: 'Estas seguro?' } %></p></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+     </div>
+    <br>
+
+  </div>
+</div>
+

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-02-24 16:43:47
+  description: MyText
+  unmounted_to: MyString
+  installed_to: MyString
+  install_by: MyString
+  notes: MyText
+  engine_id: 
+
+two:
+  date: 2016-02-24 16:43:47
+  description: MyText
+  unmounted_to: MyString
+  installed_to: MyString
+  install_by: MyString
+  notes: MyText
+  engine_id: 

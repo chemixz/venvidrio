@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serial: MyString
+  brand: MyString
+  model: MyString
+  hp: 1.5
+  kw: 1.5
+  frame: MyString
+  rpm: 1
+  hertz: 1.5
+  amperes: 1.5
+  sf: 1.5
+  back_r: MyString
+  front_r: MyString
+  m_frecuency: MyString
+  part_compatibility: MyText
+  install_date: 2016-02-24 16:29:10
+  system_id: 
+
+two:
+  serial: MyString
+  brand: MyString
+  model: MyString
+  hp: 1.5
+  kw: 1.5
+  frame: MyString
+  rpm: 1
+  hertz: 1.5
+  amperes: 1.5
+  sf: 1.5
+  back_r: MyString
+  front_r: MyString
+  m_frecuency: MyString
+  part_compatibility: MyText
+  install_date: 2016-02-24 16:29:10
+  system_id: 

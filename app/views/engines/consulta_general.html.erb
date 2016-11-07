@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="text-right hidden-print">
+      <%= link_to 'Atras', :back, class: "btn btn-danger"%>
+      <button class="print_pdf btn btn-info"><span class="glyphicon glyphicon-print"> Imprimir</span></button>
+    </div>
+    <h1>Consulta General de Motores</h1>
+    
+     
+      <div class="text-center">
+        <%= will_paginate @engines%>
+      </div>
+      <br>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Serial</th>
+              <th>Codigo</th>
+              <th>Marca</th>
+              <th>Hp</th>
+              <th>Frame</th>
+              <th>Sistema</th>
+              <th colspan="3" class="text-center hidden-print"> Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @engines.each do |engine| %>
+              <tr>
+                <td><%= engine.serial %></td>
+                <td><%= engine.code %></td>
+                <td><%= engine.brand %></td>
+                <td><%= engine.hp %></td>
+                <td><%= engine.frame %></td>
+                <td><%= engine.system.name %></td>
+                <td><p class="text-center hidden-print"><%= link_to "<span class=\"glyphicon glyphicon-sunglasses blue\"></span>".html_safe, engine %></p></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center">
+        <%= will_paginate @engines%>
+      </div>
+    <br>
+  </div>
+</div>
+

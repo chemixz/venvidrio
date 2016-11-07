@@ -1,0 +1,31 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+/* Login */
+
+
+#centillo{
+	width: 100%;
+	height:  80px;
+	
+}
+#logo {
+    width: 45%;
+    height: 45%;
+}
+.form-group {
+    margin-bottom: 1px;
+}
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-bottom: 8px;
+    margin-top: 3px;
+}
+.parrafo {
+    font-size: 25px;
+    color: #D1280B;
+}
+.parraf {
+    font-size: 15px;
+    color: #D1280B;
+}

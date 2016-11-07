@@ -1,0 +1,176 @@
+<div class="row">
+  <div class="col-xs-12 ">
+     <%= render "partials/notices" %>
+    <div class="text-right hidden-print">
+      <%= link_to 'Atras', :back, class: "btn btn-danger"%>
+      <button class="print_pdf btn btn-info"><span class="glyphicon glyphicon-print"> Imprimir</span></button>
+    </div>
+    <br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Informacion Del Motor</div>
+      <div class="panel-body">
+        <div class="col-xs-12  col-sm-6 ">
+          <p>
+            <strong>Serial:</strong>
+            <%= @engine.serial %>
+          </p>
+
+          <p>
+            <strong>Codigo:</strong>
+            <%= @engine.code %>
+          </p>
+
+          <p>
+            <strong>Marca:</strong>
+            <%= @engine.brand %>
+          </p>
+
+          <p>
+            <strong>Modelo:</strong>
+            <%= @engine.model %>
+          </p>
+
+          <p>
+            <strong>HP:</strong>
+            <%= @engine.hp %>
+          </p>
+
+          <p>
+            <strong>Kilo watts:</strong>
+            <%= @engine.kw %>
+          </p>
+          <p>
+            <strong>Voltios:</strong>
+            <%= @engine.volts %>
+          </p>
+          <p>
+            <strong>Frame:</strong>
+            <%= @engine.frame %>
+          </p>
+          <p>
+            <strong>Revoluciones por minutos:</strong>
+            <%= @engine.rpm %>
+          </p>
+
+          <p>
+            <strong>System:</strong>
+            <%= @engine.system.name %>
+          </p>
+        </div>
+        <div class="col-xs-6">
+          
+          <p>
+            <strong>Hercios:</strong>
+            <%= @engine.hertz %>
+          </p>
+
+          <p>
+            <strong>Amperios:</strong>
+            <%= @engine.amperes %>
+          </p>
+
+          <p>
+            <strong>Factor De Servicio:</strong>
+            <%= @engine.sf %>
+          </p>
+
+          <p>
+            <strong>Rodamiento Trasero:</strong>
+            <%= @engine.back_r %>
+          </p>
+
+          <p>
+            <strong>Rodamiento Frontal:</strong>
+            <%= @engine.front_r %>
+          </p>
+
+          <p>
+            <strong>Frecuencia De Mantenimiento:</strong>
+            <%= @engine.mf %>
+          </p>
+
+          <p>
+            <strong>Respuesto De:</strong>
+            <%= @engine.part_c %>
+          </p>
+
+          <p>
+            <strong>Fecha de Instalación:</strong>
+            <%= @engine.install_date %>
+          </p>
+
+           <p>
+            <strong>Area:</strong>
+            <%= @engine.system.area.name %>
+          </p>
+        </div>
+        
+      </div>
+    </div>
+    
+
+    <br>
+  
+    <% if @engine.histories.empty? %>
+    <p>No tiene historiales</p>
+    <% end %>
+    <% i=0 %>
+     <div class="panel panel-default"><!-- Begin panel --> 
+          <div class="box-header" role="tab" id="headingOne"> 
+            <div class="box-name text-center">
+             <span> Historial </span>
+            </div>
+            <div class="box-icons">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<%=i%>" aria-expanded="true"  class="chevron" id="c_<%=i%>"><!--aria-controls="collapse<%=i%>"-->
+                <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span> 
+              </a>  
+            </div> 
+          </div>
+
+          <div id="collapse_<%= i %>" class="panel-collapse in" role="tabpanel" aria-labelledby="headingOne"> 
+            <div class="Mipanel">
+              <div class="panel-body text-center"> 
+              
+                <div class="table-responsive ">  
+                 
+                  <table class="table table-bordered">
+                    <thead> 
+                      <tr class="active"> 
+                        <th class="col-sm-1">Fecha</th> 
+                        <th class="col-sm-1">Desmontado De</th> 
+                        <th class="col-sm-1">Montado en </th> 
+                        <th class="col-sm-1">Instalado Por</th> 
+                        <th class="col-sm-4">Descripción</th> 
+                        <th class="col-sm-1 text-center hidden-print " colspan="3" >Acciones</th> 
+                        
+                      </tr> 
+                    </thead> 
+                    <tbody> 
+                   <% @engine.histories.each do |history| %>
+                    
+                      <tr > 
+                        <td> <%= history.created_at.strftime("%d-%m-%Y %H:%M:%S %p") %> </td>
+                        <td> <%= history.unmounted_to %> </td> 
+                        <td> <%= history.installed_to %></td> 
+                        <td> <%= history.install_by %> </td>
+                        <td> <%= history.description %></td> 
+                        <td class="text-center hidden-print"><%= link_to "<span class=\"glyphicon glyphicon-edit green \"></span>".html_safe, edit_history_path(history)  %></td> 
+                        <td class="text-center hidden-print"><%= link_to "<span class=\"glyphicon glyphicon-sunglasses blue \"></span>".html_safe, history  %></td>
+                        <% if current_user.is_super?%>
+                          <td class="text-center hidden-print"><%= link_to "<span class=\"glyphicon glyphicon-trash red\"></span>".html_safe, history, id: history.id, method: :delete, data: { confirm: '¿Estas Seguro?' } %></td>
+                        <% end %>
+                      </tr> 
+                     
+                   <% end %>
+                    </tbody> 
+            
+                  </table>
+                  
+                </div>  
+              </div> 
+            </div>
+          </div> 
+      </div><!-- end panel-->
+
+  </div>
+</div>

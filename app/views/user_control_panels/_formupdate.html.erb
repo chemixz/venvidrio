@@ -1,0 +1,68 @@
+<div class="row">   
+  <div class="col-xs-12 col-sm-7 col-sm-offset-3 col-md-4 col-md-offset-4">
+    <%= form_tag("/user_control_panels/#{@user_control_panel.id}", method: "PUT") do %>
+      <% if @user_control_panel.errors.any? %>
+        <div role="alert" class="col-sm-12 alert alert-danger alert-dismissible fade in">
+          <button aria-label="Close" data-dismiss="alert" class="close" type="button">
+            <span aria-hidden="true">
+              ×
+            </span>
+          </button>
+          <p>
+            <h3><%= pluralize(@user_control_panel.errors.count, "error") %> prohibited this user from being saved:</h3>
+          </p>
+          <ul>
+            <% @user_control_panel.errors.full_messages.each do |message| %>
+              <li>
+                <%= message %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <label for="user_control_panel[full_name]" class="control-label">Full Name</label>
+        <input type="text" class="form-control"  name="user_control_panel[full_name]" placeholder="Full Name"  value="<%=@user_control_panel.full_name%>" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="user_control_panel[full_last_name]" class="control-label">Full Last Name</label>
+        <input type="text" class="form-control"  name="user_control_panel[full_last_name]" placeholder="Apellido" value="<%= @user_control_panel.full_last_name %>" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="user_control_panel[email]" class="control-label">Email</label>
+        <input type="text" class="form-control"  name="user_control_panel[email]" placeholder="Email" value="<%= @user_control_panel.email %>" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="user_control_panel[credential]" class="control-label">Carnet</label>
+        <input type="text" class="form-control"  name="user_control_panel[credential]" placeholder="Carnet" value="<%= @user_control_panel.credential %>" autocomplete="off">
+      </div>
+     <div class="form-group">
+        <label for="role" class="control-label">Rol</label>
+        <select name="user_control_panel[role]" class="form-control">
+            <option value="" selected>Elija una Opcion</option>
+            <option value="1" <% if @user_control_panel.role.== 1%> selected <% end %> >1</option>
+            <option value="2" <% if @user_control_panel.role.== 2%> selected <% end %> >2</option>
+            <option value="3" <% if @user_control_panel.role.== 3%> selected <% end %> >3</option>
+          
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="control-label">Clave</label>
+        <input type="password" class="form-control"  name="user_control_panel[password]" placeholder="Password" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="password_confirmation" class="control-label">Confirmar Clave</label>
+        <input type="password" class="form-control"  name="user_control_panel[password_confirmation]" placeholder=" Confirmar Clave" autocomplete="off">
+      </div>
+      
+      <br>
+      <div class="actions">
+        <input type="submit" value="Guardar" class="btn btn-primary">
+        
+      
+    <% end %>

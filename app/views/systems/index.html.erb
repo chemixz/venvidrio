@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="col-xs-12    col-sm-7 col-sm-offset-7    col-md-6 col-md-offset-8  ">
+      <%= form_tag( index_search_systems_path, class: 'navbar-form navbar-left'   ) do %>
+        <div class="form-group">
+          <input type="text" class="form-control"  name="searcher[textsearch]" placeholder="Buscar">
+          <input type="hidden" name="searcher[item_search]"  class="form-control">
+        </div>
+        <div class="form-group">
+          <select name="searcher[field]"  class="form-control" >
+           <option value="name"> Nombre </option>
+           <option value="ubication"> Ubicación </option>
+           <option value="area"> Area </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" class="form-control">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+          
+        </div>
+      <% end %>
+    </div>
+    <p id="notice"><%= render 'partials/notices' %></p>
+    <h1>Lista de Sistemas</h1>
+     <%= link_to 'Nuevo Sistema', new_system_path , class: "btn btn-success" %>
+  <div class="text-center">
+    <%= will_paginate @systems,  :previous_label => "« Anterior", :next_label=> "Siguiente »"%>
+  </div>
+   <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-sm-3">Nombre</th>
+          <th class="col-sm-50">Ubicación</th>
+          <th class="col-sm-20">Area</th>
+          <th class="col-sm-1" colspan="3">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @systems.each do |system| %>
+          <tr>
+            <td><%= system.name %></td>
+            <td><%= system.ubication %></td>
+            <td><% if system.area.present? %>
+                <%= system.area.name %>
+                <% else %>
+                   No Asignada
+                <% end%>
+            </td>
+            
+            <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-sunglasses blue\"></span>".html_safe, system %></p></td>
+            <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-edit green\"></span>".html_safe, edit_system_path(system) %></p></td>
+            <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-trash red\"></span>".html_safe, system, id: system.id, method: :delete, data: { confirm: '¿Estas seguro?' } %></p></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+   </div>
+ <div class="text-center">
+    <%= will_paginate @systems,  :previous_label => "« Anterior", :next_label=> "Siguiente »"%>
+  </div>
+    <br>
+
+   
+  </div>
+</div>

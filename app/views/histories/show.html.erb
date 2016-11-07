@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-4">
+    <p id="notice"><%= render 'partials/notices' %></p>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">Historia</div>
+      <div class="panel-body">
+        <p>
+          <strong>Fecha:</strong>
+          <%= @history.created_at %>
+        </p>
+
+        <p>
+          <strong>Description:</strong>
+          <%= @history.description %>
+        </p>
+
+        <p>
+          <strong>Desmontado De:</strong>
+          <%= @history.unmounted_to %>
+        </p>
+
+        <p>
+          <strong>Montado en:</strong>
+          <%= @history.installed_to %>
+        </p>
+
+        <p>
+          <strong>Instalado Por:</strong>
+          <%= @history.install_by %>
+        </p>
+
+        <p>
+          <strong>Notas:</strong>
+          <%= @history.notes %>
+        </p>
+
+        <p>
+          <strong>Motor:</strong>
+          <%= @history.engine.code %>
+        </p>
+
+        
+      </div>
+    </div>
+    <div class="text-center">
+      <%= link_to 'Editar', edit_history_path(@history), class: "btn btn-success" %> 
+      <%= link_to 'Atrás', :back , class: "btn btn-danger"%>
+      
+      
+    </div>
+        
+  </div>
+</div>
+

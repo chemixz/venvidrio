@@ -1,0 +1,31 @@
+<div class="row">
+
+	<div class="col-xs-12">
+		<p id="notice"><%= render 'partials/notices' %></p>
+	</div>
+	
+	<div class="col-xs-6 col-xs-offset-5">
+
+		<p>
+		  <strong>Nombres:</strong>
+		  <%= @user_control_panel.full_name %>
+		</p>
+
+		<p>
+		  <strong>Apellidos:</strong>
+		  <%= @user_control_panel.full_last_name %>
+		</p>
+		<p>
+		  <strong>Email:</strong>
+		  <%= @user_control_panel.email %>
+		</p>
+		<p>
+		  <strong>Nro. de Carnet:</strong>
+		  <%= @user_control_panel.credential %>
+		</p>
+
+		<%= link_to 'Editar', edit_user_control_panel_path(@user_control_panel) , class: "btn btn-success"%> 
+		<%= link_to 'Atrás', user_control_panels_path , class: "btn btn-danger" %>
+
+	</div>
+</div>

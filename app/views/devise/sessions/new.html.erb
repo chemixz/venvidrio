@@ -1,0 +1,37 @@
+
+    <div id="encabezado">
+      <center><img src="/images/cintillo.png"  class="img-responsive"></center>
+    </div>
+    <center><br><br>
+      <div id="login">
+        <P class="parrafo"><FONT><b> Sistema Web para el Registro y Control</b></FONT></P>
+        <P class="parrafo"><FONT><b>de Motores de Venezolana del Vidrío</b></FONT></P>
+        <P class="parraf"><FONT><b>"Planta - Valera"</b></FONT></P>
+        <br>
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4 ">
+            <%= render "partials/notices" %>
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="col-xs-12 col-sm-7 col-sm-offset-3 col-md-4 col-md-offset-4 ">
+                <div class="form-group">
+                  <%= f.label :email , class: "control-label" %><br />
+                  <%= f.email_field :email,placeholder: "Ingrese Email", class: "form-control" , autofocus: true %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password,"Contraseña" , class: "control-label" %><br /> 
+                  <%= f.password_field :password, placeholder: "Ingrese Contraseña", class: "form-control" ,autocomplete: "off" %>
+                </div>
+                <br>
+
+                <div class="actions">
+                  <%= f.submit "Iniciar Sesión" , class: "btn btn-info" %>
+                  <br>
+                </div><br><br>
+                <%= render "partials/copy" %> 
+            </div>
+        <% end %>
+      </div>
+    </center>   
+ 
+    <br>

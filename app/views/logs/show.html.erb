@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-xs-12">
+		<p>
+		  <strong>Usuario:</strong>
+		  <%= @log.user.full_name %> <%= @log.user.full_last_name %>
+		  <strong>Carnet:</strong>
+		  <%= @log.user.credential %>
+		</p>
+		
+		<p>
+		  <strong>Descripción:</strong>
+		  <%= @log.description.html_safe %>
+		</p>
+
+		<p>
+		  <strong>Antes:</strong>
+		  <%= @log.before_you %>
+		</p>
+
+		<p>
+		  <strong>Despues:</strong>
+		  <%= @log.after_you %>
+		</p>
+			
+		<div class="text-center">
+			<%= link_to 'Atrás', logs_path , class: "btn btn-danger" %>
+		</div>
+		
+		
+	</div>
+	
+</div>

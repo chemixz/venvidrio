@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-xs-12">
+		<%= render 'partials/notices' %>
+		<div class="panel panel-info">
+	      	<div class="panel-heading">Informacion Del Area</div>
+	      	<div class="panel-body">
+				<div class="col-xs-6 col-xs-offset-5">
+					<p>
+					  <strong>Nombre:</strong>
+					  <%= @area.name %>
+					</p>
+
+					<p>
+					  <strong>Ubicación:</strong>
+					  <%= @area.ubication %>
+					</p>
+
+					<%= link_to 'Editar', edit_area_path(@area) , class: "btn btn-success"%> 
+					<%= link_to 'Atrás', areas_path , class: "btn btn-danger" %>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

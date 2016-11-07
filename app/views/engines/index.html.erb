@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row show-grid text-left">
+      <div class="col-sm-12">
+        <div class="col-xs-12    col-sm-7 col-sm-offset-7    col-md-6 col-md-offset-8  ">
+          <%= form_tag( index_search_engines_path, class: 'navbar-form navbar-left'   ) do %>
+            <div class="form-group">
+              <input type="text" class="form-control"  name="searcher[textsearch]" placeholder="Buscar">
+              <input type="hidden" name="searcher[item_search]"  class="form-control">
+            </div>
+            <div class="form-group">
+              <select name="searcher[field]"  class="form-control" >
+                <option value="serial"> Serial </option>
+                <option value="code"> Codigo </option>
+                <option value="system"> Sistema </option>
+                <option value="brand"> Marca </option>
+                <option value="frame"> Frame </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" class="form-control">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <h1>Listado de Motores</h1>
+    <%= render "partials/notices" %>
+    <% if current_user.is_admin?%>
+      <%= link_to 'Nuevo Motor', new_engine_path , class: " btn btn-success"%>
+    <% end %>
+    <div class="text-center">
+      <%= will_paginate @engines,  :previous_label => "« Anterior", :next_label=> "Siguiente »"%>
+    </div>
+    <br>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Serial</th>
+            <th>Codigo</th>
+            <th>Marca</th>
+            <th>Hp</th>
+            <th>Frame</th>
+            <th>Sistema</th>
+            <th colspan="3" class="text-center"> Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @engines.each do |engine| %>
+            <tr>
+              <td><%= engine.serial %></td>
+              <td><%= engine.code %></td>
+              <td><%= engine.brand %></td>
+              <td><%= engine.hp %></td>
+              <td><%= engine.frame %></td>
+              <td><%= engine.system.name %></td>
+              <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-sunglasses blue\"></span>".html_safe, engine %></p></td>
+              <% if current_user.is_admin?%>
+                <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-edit green\"></span>".html_safe, edit_engine_path(engine) %></p></td>
+                <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-trash red\"></span>".html_safe, engine, id: engine.id, method: :delete, data: { confirm: '¿Estas seguro?' } %></p></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center">
+      <%= will_paginate @engines,  :previous_label => "« Anterior", :next_label=> "Siguiente »"%>
+    </div>
+    <br>
+  </div>
+</div>
+

@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <p id="notice"><%= render 'partials/notices' %></p>    
+    <h1>Lista de Historial</h1>
+
+    <br>
+     <div class="text-center">
+        <%= will_paginate @logs,  :previous_label => "« Anterior", :next_label=> "Siguiente »"%>
+    </div>
+    <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-sm-1">Usuario</th>
+          <th class="col-sm-1">Carnet</th>
+          <th class="col-sm-10">Descripción</th>
+        </tr>
+      </thead>
+
+      <tbody>
+       <% @logs.each do |log| %>
+          <tr>
+            <td><%= log.user.full_name %></td>
+            <td><%= log.user.credential %></td>
+            <td><%= log.description.html_safe %></td>
+            <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-sunglasses blue\"></span>".html_safe, log %></p></td>
+            <% if current_user.is_super?%>
+              <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-trash red\"></span>".html_safe, log, id: log.id, method: :delete, data: { confirm: '¿Estas Seguro?' } %></p></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+   </div>
+   <div class="text-center">
+        <%= will_paginate @logs,  :previous_label => "« Anterior", :next_label=> "Siguiente »"%>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,34 @@
+
+<% if notice.kind_of?(String) %>
+  <% n = { 'body' => notice, 'class' => 'info' } %>
+<% else %>
+  <% n = notice %>
+<% end %>
+
+<% if alert.kind_of?(String) %>
+  <% al = { 'body' => alert, 'class' => 'warning' } %>
+<% else %>
+  <% al = alert %>
+<% end %>
+
+<% if n %>
+  <div role="alert" class="col-sm-12 alert alert-<%= n['class'] %> alert-dismissible fade in">
+    <button aria-label="Close" data-dismiss="alert" class="close" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    <p>
+      <%= n['body'] %>
+    </p>
+  </div>
+<% end %>
+
+<% if al %>
+  <div role="alert" class="col-sm-12 alert alert-<%= al['class'] %> alert-dismissible fade in">
+    <button aria-label="Close" data-dismiss="alert" class="close" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
+    <p>
+      <%= al['body'] %>
+    </p>
+  </div>
+<% end %>

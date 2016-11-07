@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-xs-12">
+		<%= render 'partials/notices' %>
+		<div class="panel panel-info">
+	      	<div class="panel-heading">Informacion Del Sistema</div>
+	      	<div class="panel-body">
+				<div class="col-xs-6 col-xs-offset-5">
+					<p>
+					  <strong>Nombre:</strong>
+					  <%= @system.name %>
+					</p>
+
+					<p>
+					  <strong>Ubicación:</strong>
+					  <%= @system.ubication %>
+					</p>
+
+					<p>
+					  <strong>Area:</strong>
+					  <% if @system.area.present? %>
+				        <%= @system.area.name %>
+				      <% else %>
+				           No Asignada
+			          <% end%>
+					</p>
+
+					<%= link_to 'Editar', edit_system_path(@system), class: "btn btn-success" %> 
+					<%= link_to 'Atrás', systems_path , class: "btn btn-danger"%>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,48 @@
+<div class="row">   
+  <div class="col-xs-12 col-sm-7 col-sm-offset-3 col-md-4 col-md-offset-4">
+    <%= form_for(@system) do |f| %>
+      <% if @system.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@system.errors.count, "error") %> prohibited this system from being saved:</h2>
+
+          <ul>
+          <% @system.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :Nombre, class: "control-label"  %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :Ubicación, class: "control-label" %><br>
+        <%= f.text_area :ubication, class: "form-control" %>
+      </div>
+      <div class="form-group">
+         <%= f.label 'Area', class: "control-label" %>
+         <select  id="selectarea" name="system[area_id]" data-live-search="true" class="form-control selectpicker">
+            <option value="" selected>Seleccione una opción</option>
+            <%= @areas.each do |area| %>
+              <% if !@system.area.present?%>
+                 <option value="<%= area.id %>"><%= area.name %></option>
+                
+              <% else %>
+                 <% if area.id == @system.area.id %>
+                   <option selected value="<%= @system.area.id %>"><%= @system.area.name %></option>
+                <% else %>
+                     <option value="<%= area.id %>"><%= area.name %></option>
+                <% end %>
+               <% end %>
+            <% end %>
+        
+         </select>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "Guardar" , class: "btn btn-primary"  %>
+      
+    <% end %>
+

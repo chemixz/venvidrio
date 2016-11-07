@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p id="notice"><%= render 'partials/notices' %></p>
+    <%= link_to 'Nuevo Usuario', new_user_control_panel_path , class: "btn btn-success" %>
+    <h1>Lista de usuarios</h1>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-sm-3">Nombre</th>
+            <th class="col-sm-3">Apellido</th>
+            <th class="col-sm-3">Email</th>
+            <th class="col-sm-3">Carnet</th>
+            <th class="col-sm-3">Rol</th>
+            <th class="col-sm-3" colspan="3">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user_control_panels.each do |user| %>
+            <tr>
+              <td><%= user.full_name %></td>
+              <td><%= user.full_last_name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.credential %></td>
+              <td><%= user.role %></td>
+              <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-sunglasses blue\"></span>".html_safe, user_control_panel_path(user)%></p></td>
+              <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-edit green\"></span>".html_safe, edit_user_control_panel_path(user) %></p></td>
+              <td><p class="text-center"><%= link_to "<span class=\"glyphicon glyphicon-trash red\"></span>".html_safe, user_control_panel_path(user), id: user.id, method: :delete, data: { confirm: '¿Estas seguro?' } %></p></td>     
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

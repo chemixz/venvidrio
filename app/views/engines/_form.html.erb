@@ -1,0 +1,243 @@
+<div class="row">   
+  <div class="col-xs-12" ng-app="backendangular">
+      <%= form_for(@engine) do |f| %>
+        <% if @engine.errors.any? %>
+          <div id="error_explanation">
+            <h3><%= pluralize(@engine.errors.count, "error") %> prohibited this engine from being saved:</h3>
+
+            <ul>
+            <% @engine.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+         <div class="col-xs-3 col-xs-offset-3">
+
+            <div class="form-group" >
+               <%= f.label :serial , class: "control-label" %>
+               <%= f.text_field :serial , class: "form-control" , placeholder: "Ingrese serial"%>
+            </div>
+            <div >
+              <div class="form-group">
+                 <%= f.label 'Marca' , class: "control-label"%>
+                 <select name="engine[brand]" data-live-search="true"  class="form-control selectpicker" >
+                    <option value="" >Seleccione una Márca</option>
+                  <% if @engine.brand.present? %>
+                    <option value="<%= @engine.brand %>" selected><%= @engine.brand %> </option>
+                  <% end %>
+                    <option value="ABB">ABB</option>
+                    <option value="ABB Motor">ABB Motor</option>
+                    <option value="AEG">AEG</option>
+                    <option value="Adan Baumoller">Adan Baumoller</option>
+                    <option value="A.C Motor">A.C Motor</option>
+                    <option value="Ansaldo">Ansaldo</option>
+                    <option value="Asea">Asea</option>
+                    <option value="ASCA">ASCA</option>
+                    <option value="Ajax Electric Motor Corp.">Ajax Electric Motor Corp.</option>
+                    <option value="Ajax">Ajax</option>
+                    <option value="Baldor">Baldor</option>
+                    <option value="Brown Boveria de Venezuela">Brown Boveria de Venezuela</option>
+                    <option value="Boston Gear">Boston Gear</option>
+                    <option value="Boston Electric">Boston Electric</option>
+                    <option value="Bodine">Bodine</option>
+                    <option value="Bomba de Achique">Bomba de Achique</option>
+                    <option value="Coel">Coel</option>
+                    <option value="Condy Comby">Condy Comby</option>
+                    <option value="Delta Power">Delta Power</option>
+                    <option value="Delta Power Hidraulica">Delta Power Hidraulica</option>
+                    <option value="Delco">Delco</option>
+                    <option value="Doeer">Doeer</option>
+                    <option value="Eberle">Eberle</option>
+                    <option value="Electrical Motor">Electrical Motor</option>
+                    <option value="Flender">Flender</option>
+                    <option value="Franklin Electric">Franklin Electric</option>
+                    <option value="Fuji Electric">Fuji Electric</option>
+                    <option value="Flygt">Flygt</option>
+                    <option value="Gear">Gear</option>
+                    <option value="General Electric">General Electric</option>
+                    <option value="Indiana Motor">Indiana Motor</option>
+                    <option value="King Motor">King Motor</option>
+                    <option value="Leeson">Leeson</option>
+                    <option value="Leroy">Leroy</option>
+                    <option value="Leroy Somer">Leroy Somer</option>
+                    <option value="Louis Allis">Louis Allis</option>
+                    <option value="Letag">Letag</option>
+                    <option value="Lincoln">Lincoln</option>
+                    <option value="Lincoln Electric">Lincoln Electric</option>
+                    <option value="Lincoln AC Motors">Lincoln AC Motors</option>
+                    <option value="Marelli">Marelli</option>
+                    <option value="Marley Cooling">Marley Cooling</option>
+                    <option value="Magnetk">Magnetk</option>
+                    <option value="Maxi Toro">Maxi Toro</option>
+                    <option value="Motores USA">Motores USA</option>
+                    <option value="Marathon">Marathon</option>
+                    <option value="Marathon Electric">Marathon Electric</option>
+                    <option value="Marathon Electric">Metalaire</option>
+                    <option value="Motor Venca">Motor Venca</option>
+                    <option value="Nichi Duty">Nichi Duty</option>
+                    <option value="Ohio Electric">Ohio Electric</option>
+                    <option value="Reliance">Reliance</option>
+                    <option value="Reliance Electric">Reliance Electric</option>
+                    <option value="Sea Brown Boveri">Sea Brown Boveri</option>
+                    <option value="Sew Euro Driver">Sew Euro Driver</option>
+                    <option value="Sew Euro Boveri, INC">Sew Euro Boveri, INC</option>
+                    <option value="Simens">Simens</option>
+                    <option value="Small Motor">Small Motor</option>
+                    <option value="Sin Placa">Sin Placa</option>
+                    <option value="U.S Electrical Motors">U.S Electrical Motors</option>
+                    <option value="Uniclosed Motor">Uniclosed Motor</option>
+                    <option value="Unimount 125">Unimount 125</option>
+                    <option value="Variable Speed D.C">Variable Speed D.C</option>
+                    <option value="Vaiclosed">Vaiclosed</option>
+                    <option value="Vector Baldor">Vector Baldor</option>
+                    <option value="Westinghouse">Westinghouse</option>
+                    <option value="Weg">Weg</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                <%= f.label 'Modelo', class: "control-label" %>
+                <%= f.text_field :model ,class: "form-control" , placeholder: "Modelo" , id: "Modelo" %>
+              </div>
+            </div>
+            
+        <br>
+
+            <div ng-controller="Conversion">
+               <div class="col-xs-5 col-xs-offset-1">
+                  <div class="form-group">
+                     <%= f.label ' HP' , class: "control-label"%><br>
+                     <%= f.text_field :hp , class: "form-control" ,placeholder: "HP" ,id: "HP" , autocomplete: "false"%>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label 'Hertz', class: "control-label" %><br>
+                     <%= f.text_field :hertz , class: "form-control" , placeholder: "Hz"%>
+                  </div>
+               </div>
+
+               <div class="col-xs-5">
+                  <div class="form-group">
+                     <%= f.label 'KW' ,class: "control-label"%><br>
+                     <%= f.text_field :kw , class: "form-control", placeholder: "Kw", id: "KW"%>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label 'Volts' ,class: "control-label"%><br>
+                     <%= f.text_field :volts ,class: "form-control" ,placeholder: "Volts"%>
+                  </div>
+                 
+               </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div class="form-group">
+                 <%= f.label 'Rodamiento Delantero' , class: "control-label"%><br>
+                 <%= f.text_field :front_r ,class: "form-control" , placeholder: "Rodamiento Delantero" %>
+               </div>
+                <div class="form-group">
+                 <%= f.label 'Frecuencia mantenimiento' , class: "control-label"%><br>
+
+                 <select name="engine[mf]"  data-live-search="true" class="form-control selectpicker" >
+                    <option value="" selected>Seleccione una opción</option>
+                  <% if @engine.mf.present? %>
+                    <option value="<%= @engine.mf %>" selected><%= @engine.mf %> </option>
+                  <% end %>
+                    <option value="1 Año">1 Año</option>
+                    <option value="1 Año y 6 Meses">1 Año y 6 Meses</option>
+                    <option value="2 Años">2 Años</option>
+                    <option value="3 Años">3 Años</option>
+                    <option value="4 Años">4 Años</option>
+                    <option value="5 Años">5 Años</option>
+                    <option value="4 Años">6 Años</option>
+                    <option value="5 Años">7 Años</option>
+                 </select>
+               </div>
+             </div>
+         </div>
+
+        <div class="col-xs-3">
+          <div ng-controller="ConsultaArea">
+            <div class="form-group">
+                <%= f.label 'Area', class: "control-label" %>
+                <select name="" id="selectarea" name="area" data-live-search="true" class="form-control selectpicker">
+                   <option value="">Seleccione una opción</option>
+                  <%= @areas.each do |area| %>
+                    <% if !@engine.system.present? %>
+                        <option value="<%= area.id %>"><%= area.name %></option>
+                    <% else %>
+                        <% if @engine.system.area.id == area.id %>
+                          <option selected value="<%= @engine.system.area.id %>"><%= @engine.system.area.name %></option>
+                        <% else %>
+                            <option value="<%= area.id %>"><%= area.name %></option>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                 </select>
+              </div>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Sistema', class: "control-label" %>
+            <select name="engine[system_id]" id="selectsistema" name="engine[system_id]" data-live-search="true" class="form-control ">
+            <% if @engine.system.present? %>
+                <option value="<%= @engine.system.id %>"><%= @engine.system.name %></option>
+            <% else %>
+              <option value="" ="">Seleccione una opción</option>
+            <% end %>
+             </select>
+          </div>
+          <div class="form-group" ng-controller="GenerarCodigo">
+             <%= f.label 'Codigo' ,class: "control-label"%><br>
+              <%= f.text_field :code ,class: "form-control" , readonly: "true" , id: "Codigo", placeholder: "Codigo" %>
+
+             <% if  controller.action_name != 'edit' %>
+                <input type="button" ng-click="generarcodigo()" value="Generar" >
+             <% end %>
+          </div>
+         
+           <div class="col-xs-5 col-xs-offset-1">
+               <div class="form-group">
+                 <%= f.label 'Frame ' , class: "control-label" %><br>
+                 <%= f.text_field :frame , class: "form-control", placeholder:"Frame" , min: 0%>
+                </div>
+                 <div class="form-group">
+                     <%= f.label 'Amperaje' ,class: "control-label"%><br>
+                     <%= f.text_field :amperes ,class: "form-control" ,placeholder: "Amp" , min: 0%>
+                  </div>
+           </div>
+
+             <div class="col-xs-5">
+               <div class="form-group">
+                  <%= f.label 'RPM' ,class: "control-label"%><br>
+                  <%= f.number_field :rpm , class: "form-control", placeholder: "RPM" , min: 0%>
+               </div>
+               <div class="form-group">
+                  <%= f.label 'FS', class: "control-label"%><br>
+                  <%= f.number_field :sf , class: "form-control", placeholder: "Fs" , min: 0 %>
+                  
+               </div>
+            </div>
+            <div class="col-xs-12">
+               
+               <div class="form-group">
+                  <%= f.label 'Rodamiento Trasero', class: "control-label"%><br>
+                  <%= f.text_field :back_r , class: "form-control" ,placeholder: "Rodamiento Trasero"%>
+               </div>
+                <div class="form-group">
+                  <%= f.label 'Fecha instalado' %><br>
+                  <%= f.text_field :install_date ,class:"form-control", id:"datepicker" , placeholder: "Fecha" %>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-xs-offset-3">
+           <div class="form-group">
+            <%= f.label 'Repuesto De:' , class: "control-label" %><br>
+            <%= f.text_area :part_c , class: "form-control"%>
+          </div>
+        </div>
+        
+        <div class="actions">
+            <div class="col-xs-12 text-center">
+            <br>
+            <%= f.submit  class: "btn btn-primary" %>
+      <% end %>
+

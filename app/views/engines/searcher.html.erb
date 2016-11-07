@@ -1,0 +1,22 @@
+<div class="row">   
+	<div class="col-xs-12" ng-app="backendangular">
+		<div class="col-xs-12    ">
+          <%= form_tag( engine_searched_path, class: 'navbar-form navbar-left'   ) do %>
+            <div class="form-group">
+              <input type="text" class="form-control"  name="searcher[textsearch]" placeholder="Search">
+            </div>
+            
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" class="form-control">
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </div>
+            <div>
+              <input type="radio" name="searcher[OptionSearch]" value="sistema"> Sistema<br>
+              <input type="radio" name="searcher[OptionSearch]" value="codigo"> Codigo<br>
+              <input type="radio" name="searcher[OptionSearch]" value="serial"> Serial
+            </div>
+          <% end %>
+        </div>
+	</div>
+</div>

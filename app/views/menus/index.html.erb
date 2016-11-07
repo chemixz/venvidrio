@@ -1,0 +1,208 @@
+<div class="row">
+    <center><h1>Manual de Usuario.</h1></center>
+    <br>
+    <div>
+        <h2>Botones Del Sistema.</h2>
+        <div>
+            <div>
+                <img src="images/manual/boton_iniciar.png"> Permite Acceder Al Sistema.
+            </div>
+            <% if current_user.is_admin?%>
+                <div>
+                    <img src="images/manual/boton_nv_area.png"> Permite Acceder A La Pantalla Para Registrar Una Nueva Area.
+                </div>
+                <div>
+                    <img src="images/manual/boton_nv_system.png"> Permite Acceder A La Pantalla Para Registrar Un Nuevo Sistema.
+                </div>
+                <div>
+                    <img src="images/manual/boton_nv_motor.png"> Permite Acceder A La Pantalla Para Registrar Un Nuevo Motor.
+                </div>
+            <% end %>
+            <div>
+                <img src="images/manual/boton_nv_historial.png" > Permite Acceder A La Pantalla Para Registrar Una Nueva Historia.
+            </div>
+            <div>
+                <img src="images/manual/boton_veer_historial.png"> Redirecciona A La Pantalla Donde Se Muestran Los Datos Del Motor Y Las Historias Asociadas Al Motor.
+            </div>
+            <div>
+               <img src="images/manual/boton_imprimir.png" > Genera Un Documento PDF De La Pantalla En La Cual Se Encuentra. 
+            </div>
+            <div>
+                <img src="images/manual/boton_editar.png"> Redirecciona A La Pantalla Donde Se Podra Editar El Registro.
+            </div>
+            <div>
+                <img src="images/manual/boton_guarda.png"> Permite Guardar Los Datos En La Base de Dátos.
+            </div>
+            <div>
+                <img src="images/manual/boton_atras.png"> Regresa A La Pantalla Anterior.
+            </div>
+            <div>
+                <img src="images/manual/boton_buscar.png"> Permite Realizar Una Búsqueda En La Base de Dátos.
+            </div>
+            <div>
+                <img src="images/manual/boton_ver.png" > Permite Ver El Registro En La Base de Dátos.
+            </div>
+            <div>
+                <img src="images/manual/boton_edit.png"> Envía A La Pantalla Donde Se Podra Modificar o Actualizar El Registro.
+            </div>
+            <% if current_user.is_admin?%>
+                <div>
+                    <img src="images/manual/boton_borrar.png"> Permite Eliminar el Registro de la Base de Dátos
+                </div>
+            <% end %>    
+        </div>
+    </div><hr>
+    <div>
+        <h2>Pantalla de Inicio.</h2>
+        <br>
+        Para acceder al sistema es necesario contar con un Usuario y Contraseña, como se muestra en la siguiente imagen.<br><br>
+        <center><img src="images/manual/InicioNV.png"></center><br>
+        Luego de llenar los datos requeridos por el sistema, a continuación deberá pulsar el botón de <img src="images/manual/boton_iniciar.png">
+    </div><hr>
+    <div>
+        <h2>Pantalla de Bienvenida.</h2>
+        <br>
+        Luego de acceder se mostrara las posibles acciones, que se podrán realizar en este sistema, al igual que un mensaje de Bienvenida al Usuario que este con sesión activa.<br><br>
+        <% if current_user.is_admin?%>
+            <center><img src="images/manual/pantalla_bienvenida_admin.png"></center>
+        <% else %>
+            <center><img src="images/manual/pantalla_welcome.png"></center>
+        <% end %>
+    </div><hr>
+    <div>
+        <h2>Barra de Menú y sus funciones.</h2>
+        <br>
+        <% if current_user.is_admin?%>
+            <center><img src="images/manual/menu_admin.png"></center>
+        <% else %>
+            <center><img src="images/manual/menu.png"></center>
+        <% end %>
+    </div><hr>
+    <div>
+        <h2>El Menú <img src="images/manual/menu_venvidrio.png"></h2>
+        <br>
+        Tiene la función de recargar o enviar a la Pantalla de Bienvenida. <br>
+    </div><hr>
+    <div>
+        <h2>El Menú <img src="images/manual/menu_registro.png"></h2>
+        <br>
+        <% if current_user.is_admin?%>
+            Mostrara tres (3) funciones.<br><br>
+            <img src="images/manual/submenu_registro_admin.png"><br><hr>
+        <% else %>
+            Mostrara una (1) función.<br><br>
+            <img src="images/manual/submenu_registro.png"><br><hr>
+        <% end %>
+
+        <% if current_user.is_admin?%>
+            <div>
+                <h3>El Sub-Menú <img src="images/manual/sub_registro_areas.png"></h3> Te envía a la pantalla donde se muestran las áreas ya registradas, esta pantalla cuenta con un buscador, donde filtras por (Nombre y Ubicación).<br><br>
+                <center><img src="images/manual/pantalla_area_admin.png"></center><br>
+                Al pulsar en el botón <img src="images/manual/boton_nv_area.png"> te envia a la siguiente pantalla. <br><br>
+                <center><img src="images/manual/pantalla_nv_area.png"></center><br><br>
+                Al pulsar en el botón <img src="images/manual/boton_ver.png"> te envia a la pantalla donde se muestra la información del área. <br><br>
+                <center><img src="images/manual/pantala_infarea.png"></center><br><br>
+                Al pulsar en el botón <img src="images/manual/boton_edit.png"> te envia a la pantalla donde podrás editar los datos del área. <br><br>
+                <center><img src="images/manual/pantalla_editar_area.png"></center><br><br>
+                Al pulsar en el botón <img src="images/manual/boton_borrar.png"> Elimina el área de la base de dátos. <hr>
+            </div>
+            <div>
+                <h3>El Sub-Menú <img src="images/manual/sub_registros_motores.png"></h3> Te envía a la pantalla donde se muestran los sistemas ya registrados, esta pantalla cuenta con un buscador, donde filtras por (Nombre, Ubicación y Area).<br><br>
+                <center><img src="images/manual/pantalla_system_admin.png"></center><br>
+                Al pulsar en el botón <img src="images/manual/boton_nv_system.png"> te envia a la siguiente pantalla. <br><br>
+                <center><img src="images/manual/pantalla_nvsystem.png"></center><br><br>
+                Al pulsar en el botón <img src="images/manual/boton_ver.png"> te envia a la pantalla donde se muestra la información del sistema. <br><br>
+                <center><img src="images/manual/pantalla_inf_system.png"></center><br><br>
+                Al pulsar en el botón <img src="images/manual/boton_edit.png"> te envia a la pantalla donde podrás editar los datos del sistema. <br><br>
+                <center><img src="images/manual/pantalla_editar_system.png"></center><br><br>
+                Al pulsar en el botón <img src="images/manual/boton_borrar.png"> Elimina el sistema de la base de dátos. <hr>
+            </div>
+        <% end %>
+
+        <h3>El Sub-Menú <img src="images/manual/sub_registro_motor.png"></h3> Te envía a la pantalla donde se muestran los motores ya registrados, esta pantalla cuenta con un buscador, donde filtras por (Serial, Código, Sitema, Marca o Frame).<br><br>
+        <% if current_user.is_admin?%>
+            <center><img src="images/manual/pantalla_motor_admin.png"></center><br>
+            Al pulsar en el botón <img src="images/manual/boton_nv_motor.png"> te envia a la siguiente pantalla. <br><br>
+            <center><img src="images/manual/pantalla_nv_motor.png"></center><br><br>
+            Al pulsar en el botón <img src="images/manual/boton_edit.png"> te envia a la pantalla donde podrás editar los datos del motor. <br><br>
+            <center><img src="images/manual/pantalla_edit_motor.png"></center><br><br>
+            Al pulsar en el botón <img src="images/manual/boton_borrar.png"> Elimina el motor de la base de dátos. <br><br>
+        <% else %>
+            <center><img src="images/manual/pantalla_motor.png"></center><br>
+        <% end %>
+        Al pulsar en <img src="images/manual/boton_ver.png"> te envia a la siguiente pantalla. <br><br>
+        <% if current_user.is_admin?%>
+            <center><img src="images/manual/pantalla_inf_motor_admin.png"></center><br>
+        <% else %>
+            <center><img src="images/manual/pantalla_inf_motor.png"></center><br>
+        <% end %>
+        En esta pantalla podras observar la información del motor, al igual si posee o no posee historia, y la opción de registrar una una nueva historia. <br><br>
+        Al pulsar en <img src="images/manual/boton_nv_historial.png"> te enviara a la siguiente pantalla. <br><br>
+        <center><img src="images/manual/pantalla_nvhistoria.png"></center><br>
+        En esta pantalla pordras registrar la historia asociada al motor. <br><br>
+        <center><img src="images/manual/pantalla_inf_historia.png"></center><br>
+        <% if current_user.is_admin?%>
+        <% else %>
+            Cuando el motor posee historia se muestra el boton <img src="images/manual/boton_veer_historial.png"><br>
+            <center><img src="images/manual/pantalla_infmotor2.png"></center><br>
+        <% end %>
+        Pulsando sobre el boton Ver Historial te envia a la siguiente pantalla. <br><br>
+        <% if current_user.is_super?%>
+            <center><img src="images/manual/pantalla_inf_motor_super.png"></center><br>
+        <% else %>
+            <center><img src="images/manual/patalla_motor_historia.png"></center><br>
+        <% end %>
+        En esta pantalla pordras ver y editar las historias. <br><br>
+        Tambien se Encuentra el boton <img src="images/manual/boton_imprimir.png"> pulsando sobre el generara un documento PDF, como se muestra a continuación. <br>
+        <center><img src="images/manual/pantalla_documento.png"></center><br>
+    </div><hr>
+
+    <div>
+        <h2>El Menú <img src="images/manual/menu_consulta.png"></h2>
+        <br>
+        Mostrara una (1) función.<br>
+        <img src="images/manual/submenu_consulta.png"><br><br>
+        <h3>El Sub-Menú <img src="images/manual/sub_consulta.png"></h3> Te envía a la pantalla donde se muestra la lista general de los motores ya registrado, y el boton Imprimir. <br><br>
+        <center><img src="images/manual/pantalla_general.png"></center><br>
+    </div><hr>
+    <div>
+        <h2>El Menú <img src="images/manual/menu_ayuda.png"></h2>
+        <br>
+        Mostrara una (1) función.<br>
+        <img src="images/manual/submenu_ayuda.png"><br><br>
+        <h3>El Sub-Menú <img src="images/manual/sub_ayuda.png"></h3>
+        Te envia al manual de usuario donde se describe cada función del sistema. <br>
+    </div><hr>
+
+    <% if current_user.is_admin?%>
+        <div>
+            <h2>El Menú <img src="images/manual/menu_panel.png"></h2>
+            <br>
+            <% if current_user.is_super?%>
+                Mostrara dos (2) funciones.<br>
+                <img src="images/manual/sub_panel_super.png"><br><br>
+                <h3>El Sub-Menú <img src="images/manual/sub_panel_user.png"></h3> Te envia a la siguiente pantalla. <br>
+                <center><img src="images/manual/patalla_user_super.png"></center><br>
+                Podrás crear, ver, editar y/o elimininar cuentas de usuarios.
+                <hr>
+            <% else %>
+                Mostrara una (1) función.<br>
+                <img src="images/manual/submenu_panel.png"><br><br>
+            <% end %>
+            
+            <h3>El Sub-Menú <img src="images/manual/sub_panel_historial.png"></h3>
+            Te envia a la pantalla donde describe cada acción hecha en el sistema como "Crear, Actualizar o Eliminar".<br>
+            <center><img src="images/manual/pantalla_logs.png"></center><br>
+            Al pulsar en <img src="images/manual/boton_ver.png"> te envia a la siguiente pantalla. <br><br>
+            <center><img src="images/manual/pantalla_inf_logs.png"></center><br>
+        </div><hr>  
+    <% end %>
+
+    <div>
+        <h2>El Menú <img src="images/manual/menu_salir.png"></h2>
+        <br>
+        Este terminara la sesión y envía a la pantalla de Inicio. <br><br>
+        <center><img src="images/manual/InicioNV.png"></center><br>
+    </div><hr>
+
+</div>

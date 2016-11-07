@@ -1,0 +1,57 @@
+<div class="row">   
+  <div class="col-xs-12" ng-app="backendangular">
+      <%= form_for(@history) do |f| %>
+        <% if @history.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@history.errors.count, "error") %> prohibited this history from being saved:</h2>
+            <ul>
+            <% @history.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-4 col-md-4 col-md-offset-4">
+          
+          <div class="form-group">
+            <%= f.label 'Fecha' , class: "control-label" %><br>
+            <%= f.text_field :date ,class:"form-control", id:"datepicker" %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Descripción' ,class: "control-label" %><br>
+            <%= f.text_area :description, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Desmontado De:' , class: "control-label"%><br>
+            <%= f.text_field :unmounted_to , class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Montado A:' ,class: "control-label" %><br>
+            <%= f.text_field :installed_to , class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Instalado Por:', class: "control-label" %><br>
+            <%= f.text_field :install_by , class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label 'Notas' , class: "control-label"%><br>
+            <%= f.text_area :notes , class: "form-control"%>
+          </div>
+          <div class="form-group">
+             <%= f.label 'Motor', class: "control-label" %>
+             <select  id="selecthistories" name="history[engine_id]"   class="form-control selectpicker" readonly>
+                
+                  <% if !@history.engine.present?%>
+                     <option value="<%= @engine.id %>" selected><%= @engine.code %></option>
+                   <% else %>
+                     <option value="<%= @history.engine.id %>" selected><%= @history.engine.code %></option>
+                   <% end %>
+                
+            
+             </select>
+          </div>
+          <br>
+          <div class="Acciones text-center">
+            <%= f.submit "Guardar" , class: "btn btn-primary"  %>
+        
+      <% end %>

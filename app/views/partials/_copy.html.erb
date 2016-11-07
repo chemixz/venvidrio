@@ -1,0 +1,14 @@
+<div class="control-label">
+    <small>
+    <% dias = ["Domingo" , "Lunes" , "Martes" , "Miercoles", "Jueves", "Viernes "] %>
+    <% annios = ["Enero" ,"Febrero" , "Marzo" , "Abril" , "Mayo" , "Junio" , "Julio" , "Agosto" , "Septiembre" , "Octubre" , "Noviembre" , "Diciembre"] %>
+    <% d = Time.now.strftime("%w") %>
+    <% aa = Time.now.strftime("%m")%>
+    
+
+        <%= dias[d.to_i]%> <%= Time.now.strftime("%d")%> de <%= annios[aa.to_i]%> del <%= Time.now.strftime("%Y") %> <br> &copy; 2016 Desarrollado por: Robert Pérez<br>Pasante de Ingeniería de Sistemas - UNEFA
+        <div>
+        	
+        </div>
+    </small>    
+</div> 

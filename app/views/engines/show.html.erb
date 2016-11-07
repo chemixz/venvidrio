@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-xs-12 ">
+    <%= render "partials/notices" %>
+    <div class="panel panel-info">
+      <div class="panel-heading">Informacion Del Motor</div>
+      <div class="panel-body">
+        <div class="col-xs-12  col-sm-6 ">
+          <p>
+            <strong>Serial:</strong>
+            <%= @engine.serial %>
+          </p>
+          <p>
+            <strong>Codigo:</strong>
+            <%= @engine.code %>
+          </p>
+          <p>
+            <strong>Marca:</strong>
+            <%= @engine.brand %>
+          </p>
+          <p>
+            <strong>Modelo:</strong>
+            <%= @engine.model %>
+          </p>
+          <p>
+            <strong>Area:</strong>
+            <%= @engine.system.area.name %>
+          </p>
+          <p>
+            <strong>Sistema:</strong>
+            <%= @engine.system.name %>
+          </p>
+          <p>
+            <strong>HP:</strong>
+            <%= @engine.hp %>
+          </p>
+          <p>
+            <strong>KW:</strong>
+            <%= @engine.kw %>
+          </p>
+          <p>
+            <strong>Hertz:</strong>
+            <%= @engine.hertz %>
+          </p>
+          <p>
+            <strong>Voltios:</strong>
+            <%= @engine.volts %>
+          </p>
+        </div>
+        <div class="col-xs-6">
+          <p>
+            <strong>Frame:</strong>
+            <%= @engine.frame %>
+          </p>
+          <p>
+            <strong>RPM:</strong>
+            <%= @engine.rpm %>
+          </p>
+          <p>
+            <strong>Amperaje:</strong>
+            <%= @engine.amperes %>
+          </p>
+          <p>
+            <strong>Factor De Servicio:</strong>
+            <%= @engine.sf %>
+          </p>
+          <p>
+            <strong>Rodamiento Trasero:</strong>
+            <%= @engine.back_r %>
+          </p>
+          <p>
+            <strong>Rodamiento Delantero:</strong>
+            <%= @engine.front_r %>
+          </p>
+          <p>
+            <strong>Frecuencia De Mantenimiento:</strong>
+            <%= @engine.mf %>
+          </p>
+          <p>
+            <strong>Respuesto De:</strong>
+            <%= @engine.part_c %>
+          </p>
+          <p>
+            <strong>Fecha de Instalación:</strong>
+            <%= @engine.install_date %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center hidden-print">
+      <% if current_user.is_admin?%>
+        <%= link_to 'Editar', edit_engine_path(@engine), class: "btn btn-success" %> 
+      <% end %>
+      <%= link_to 'Nuevo Historial', new_history_path(@engine) , class: "btn btn-primary"%>
+      <% if @engine.histories.empty? %>
+        No tiene historiales
+      <% else %>
+        <%= link_to 'Ver Historial', engine_report_path(@engine) , class: "btn btn-info"%>
+      <% end %>
+      <%= link_to 'Atrás', engines_path , class: "btn btn-danger"%>
+    </div>
+    <br>
+  </div>
+</div>
